@@ -5,11 +5,17 @@ const morgan = require('morgan');
 const { engine } = require('express-handlebars');
 const app = express()
 const port = 3000
-
+//static file path
 app.use(express.static(path.join(__dirname, 'public')));
+//xu ly req.body
+app.use(express.urlencoded({
+  extended: true,
+}));
+app.use(express.json());
+//XMLtHttpRequest, fetch .....
 
 //HTTP logger
-app.use(morgan('combined'))
+// app.use(morgan('combined'));
 //template engine
 app.engine('hbs', engine({
   extname: '.hbs'
@@ -23,6 +29,16 @@ app.get('/', (req, res) => {
 
 app.get('/news', (req, res) => {
   res.render('news');
+});
+
+app.get('/search', (req, res) => {
+  res.render('search');
+});
+
+app.post('/search', (req, res) => {
+  //query params thì .query còn form thì body
+  console.log(req.body)
+  res.send('');
 });
 
 app.listen(port, () => {
