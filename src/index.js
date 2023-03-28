@@ -5,11 +5,14 @@ const { engine } = require('express-handlebars');
 const app = express();
 const port = 3000;
 const route = require('./routes');
+const db = require('./config/db');
+//Connect to db
+db.connect();
 
 //static file path
-              app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 //xu ly req.body
-      app.use(
+app.use(
     express.urlencoded({
         extended: true,
     }),
