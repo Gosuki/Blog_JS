@@ -17,7 +17,6 @@
       "pre-commit": "lint-staged"
     }
   },
-    
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Gosuki/Blog_JS.git"
@@ -35,7 +34,9 @@
   "dependencies": {
     "express": "^4.18.2",
     "express-handlebars": "^7.0.4",
-    "mongoose": "^7.0.3"
+    "method-override": "^3.0.0",
+    "mongoose": "^7.0.3",
+    "mongoose-slug-generator": "^1.0.4"
   },
   "devDependencies": {
     "husky": "^8.0.3",

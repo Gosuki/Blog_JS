@@ -6,6 +6,9 @@ const app = express();
 const port = 3000;
 const route = require('./routes');
 const db = require('./config/db');
+const methodOverride = require('method-override');
+
+app.use(methodOverride('_method'))
 //Connect to db
 db.connect();
 
@@ -27,6 +30,9 @@ app.engine(
     'hbs',
     engine({
         extname: '.hbs',
+        helpers: {
+            sum:(a,b) =>a+b,
+        }
     }),
 );
 app.set('view engine', 'hbs');
